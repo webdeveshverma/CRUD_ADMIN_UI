@@ -51,7 +51,23 @@
 .navbar_tool{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .Container_Main{
   margin-top:20px ;
+}
+
+
+@media only screen and (max-width: 320px) {
+  
+  .loginbox{
+    border: 2px solid red;
+     
+  }
+}
+
+
+.container{
+
+  overflow-x: scroll;
 }

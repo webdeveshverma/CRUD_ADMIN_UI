@@ -1,7 +1,8 @@
 import User from '../model/user.js';
 // Get all users
-export const getUsers = async (req, res) => {
 
+
+export const getUsers = async (req, res) => {
     try {
         const limitValue = req.query.limit;
         const pageValue = req.query.page;
@@ -11,6 +12,8 @@ export const getUsers = async (req, res) => {
         return res.status(404).json({ message: error.message })
     }
 };
+
+
 
 // Save data of the user in database
 export const addUser = async (request, response) => {
@@ -26,7 +29,6 @@ export const addUser = async (request, response) => {
 }
 
 
-
 // Get a user by id
 export const getUserById = async (request, response) => {
     try {
@@ -36,8 +38,6 @@ export const getUserById = async (request, response) => {
         response.status(404).json({ message: error.message })
     }
 }
-
-
 
 
 // rote for the search by name
@@ -58,20 +58,7 @@ export const serachByName = async (req, res) => {
 }
 
 
-// User.find({$or:[{region: "NA"},{sector:"Some Sector"}]}, function(err, user) 
-//  {
-//     if (err)
-//     {
-//         res.send(err);
-//     }
-//     console.log(user);
-//     res.json(user);
 
-//  });
-
-
-
-// Save data of edited user in the database
 export const editUser = async (request, response) => {
     let user = request.body;
 
@@ -83,6 +70,7 @@ export const editUser = async (request, response) => {
         response.status(409).json({ message: error.message });
     }
 }
+
 
 // deleting data of user from the database
 export const deleteUser = async (request, response) => {

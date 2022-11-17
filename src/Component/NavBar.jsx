@@ -30,7 +30,7 @@ const NavBar = () => {
                 <Tabs to="/home/all" exact>All Users</Tabs>
                 <Tabs to="/home/add" exact>Add User</Tabs>
               </div>
-                <Tabs className='logouttab' to="/" ><Button variant="outlined" style={{color:"white",fontWeight:"bold"}} >LogOut<AiOutlineLogout style={{fontSize:"20px",color:"white"}} /></Button></Tabs>
+                <Tabs className='logouttab' to="/" ><Button variant="link" style={{color:"white",fontWeight:"bold"}} >LogOut<AiOutlineLogout style={{fontSize:"20px",color:"white"}} /></Button></Tabs>
             </Toolbar>
             
         </Header>

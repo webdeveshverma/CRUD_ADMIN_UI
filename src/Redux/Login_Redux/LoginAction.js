@@ -24,7 +24,7 @@ export const logoutUser=()=>({type:LOGOUT});
 export const loginSuccessData=(data,navigate)=>(dispatch)=>{
 
     dispatch(loginLoding());
-    axios.post("https://crimecheck-backend.herokuapp.com/users/login",data).then(({data})=>{
+    axios.post("http://localhost:5002/login",data).then(({data})=>{
   dispatch(loginSuccess(data))
   setTimeout(() => {
     navigate("/home")

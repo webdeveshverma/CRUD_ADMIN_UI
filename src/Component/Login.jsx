@@ -10,21 +10,22 @@ import{RiAdminLine} from "react-icons/ri"
 export default function Login() {
 
   const [input,setInput]=useState({
-    username:""
+    email:"",
+    password:""
 })
 
 const dispatch=useDispatch();
 const store=useSelector((store)=>store.LogReducer);
 const navigate=useNavigate();
 console.log(store);
-
+console.log(input)
 const userpattern = /[@#$%&*_ ]/;
   return (
     <>
-      <Box
+      <Box className="loginbox"
         sx={{
-          width: "600px",
-          height: "400px",
+          width: "50%",
+          height: "70vh",
           margin: "auto",
           marginTop: "5%",
           boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 3px",
@@ -42,19 +43,18 @@ const userpattern = /[@#$%&*_ ]/;
         </Typography >
         <RiAdminLine style={{color:"red",fontSize:"100px"}}/>
          <Box sx={{display:"flex",flexDirection:"column" ,width:"100%" ,alignItems:"center"}}>
-         <TextField variant="outlined" label='enter Admin username..' sx={{width:"60%" , marginBottom:"20px"}} onChange={(e)=>{
-            setInput({...input,username:e.target.value})
+         <TextField variant="outlined" label='enter Admin email..' sx={{width:"60%" , marginBottom:"20px"}} onChange={(e)=>{
+            setInput({...input,email:e.target.value})
+         }}/>
+         <TextField variant="outlined" label='enter Admin password..' sx={{width:"60%" , marginBottom:"20px"}} onChange={(e)=>{
+            setInput({...input,password:e.target.value})
          }}/>
          
           <Button variant="contained" sx={{width:"60%" ,height:"45px"}}
           onClick={()=>{
-            if(userpattern.test(input.username)){
-              alert("username must contains alphanumeric character!!")
-               
-            }
-            else{
+           
               dispatch(loginSuccessData(input,navigate))
-            }
+            
           }}
           >Submit</Button>
          </Box>

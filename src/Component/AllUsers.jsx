@@ -7,8 +7,6 @@ import { DialogBox } from './DialogBox';
 import NavBar from './NavBar';
 const BASE_URL = process.env.REACT_APP_API_URL;
 
-
-
 import("../App.css")
 
 const StyledTable = styled(Table)`
@@ -36,8 +34,6 @@ const AllUsers = () => {
     const [paginatedData, setPaginatedData] = useState([]);
     const [searchedData, setSearchedData] = useState([]);
     const pageSize = searchedData.length > 0 ? Math.ceil(searchedData.length / 5) : Math.ceil(userData.length / 5);
-
-
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState("")
     const [dialog, setDialog] = useState({
@@ -47,9 +43,7 @@ const AllUsers = () => {
         ids: ""
     })
 
- 
 
-   
 
     function paginate(array, page_size, page_number) {
         return array.slice((page_number - 1) * page_size, page_number * page_size);
@@ -78,8 +72,6 @@ const AllUsers = () => {
     
 
 
-
-
     useEffect(() => {
         console.log("first useEffect")
         axios.get(`${BASE_URL}`).then((res) => {
@@ -93,14 +85,6 @@ const AllUsers = () => {
     }, [])
 
 
- 
-
-
-
-   
-
-    
-
    const getserachHandler= async()=>{
 
      let res=await searchHandler(search)
@@ -109,22 +93,14 @@ const AllUsers = () => {
     console.log(res.data)
    }
 
-
     useEffect(() => {
-        getAllUsers();
-      
-
-        
+        getAllUsers();  
     }, [setSearch]);
 
     
-    
-
     const getAllUsers = async () => {
         let response = await getUsers();
-        setUsers([...response.data].reverse());
-        
-    
+        setUsers([...response.data].reverse());    
     }
 
     const getSearchInput = (e) => {
@@ -150,19 +126,17 @@ const AllUsers = () => {
         getAllUsers();
     }
 
-
     return (
         <div>
             <NavBar/>
             <div className="container">
                 <Box sx={{ width: "90%", height: "50px", margin: "auto", marginTop: "20px" }}>
 
-                    <Box sx={{ width: "400px", margin: "auto", display: "flex", justifyContent: "space-between" }}>
-                        <TextField variant='outlined' label="Search by name,email or role" sx={{ width: "290px" }} onChange={getSearchInput} />
+                    <Box sx={{ width: "100%", margin: "auto", display: "flex", justifyContent: "space-between" }}>
+                        <TextField variant='outlined' label="Search by name,email or role" sx={{ width: "100%" }} onChange={getSearchInput} />
                         <Button variant='outlined' onClick={getserachHandler}>Search</Button>
                     </Box>
                 </Box>
-
                 <StyledTable>
                     <TableHead>
                         <THead>
@@ -173,12 +147,9 @@ const AllUsers = () => {
                             <TableCell>Phone</TableCell>
                             <TableCell>Gender</TableCell>
                             <TableCell>Action</TableCell>
-
                         </THead>
                     </TableHead>
                     <TableBody>
-                    {/* {[...users].reverse().map((user) => ( */}
-                        
                         {users.map((user) => (
                             <TRow key={user._id}>
                                 <TableCell>{user._id}</TableCell>
@@ -208,7 +179,6 @@ const AllUsers = () => {
                     />
                 }
             </div>
-
         </div>
     )
 }

@@ -45,84 +45,101 @@ const AddUser = () => {
     formState: { errors },
   } = useForm();
 
-  const validEmail=(email)=>{
-    
+  const validEmail = (email) => {
+
   }
 
 
   const onsubmit = async (data) => {
-  try{
-    await addUser(data);
-    alert("Ragister Successfully");
-    navigate("/home/all");
-  }
-  catch(error){
-     alert(error.message)
-  }
+    try {
+      await addUser(data);
+      alert("Ragister Successfully");
+      navigate("/home/all");
+    }
+    catch (error) {
+      alert(error.message)
+    }
   }
 
 
+  const ImageUpload=(event)=>{
+   console.log(event.target.files)
+  
+  }
 
 
   return (
-        // complete form section
-      <div>
-        <NavBar/>
-        <form onSubmit={handleSubmit(onsubmit)} noValidate="">
+    // complete form section
+    <div>
+      <NavBar />
+      <form onSubmit={handleSubmit(onsubmit)} noValidate="">
         <Container className="Container_Main">
           <Typography variant="h4">Add User +</Typography>
 
-        <Input placeholder="Name"
-          {...register('name', { required: true })} />
-        <span>{errors.name && "*required Name."}</span>
-        
-        <Input placeholder="Lastname"
-          {...register('lastname', { required: true })} />
-        <span>{errors.lastname && "*required lastname."}</span>
+          <Input placeholder="Name"
+            {...register('name', { required: true })} />
+          <span>{errors.name && "*required Name."}</span>
 
-        <Input placeholder="Email" 
-          {...register('email', { required: true })} />
-        <span>{errors.email && "*required email"}</span>
-        
+          <Input placeholder="Lastname"
+            {...register('lastname', { required: true })} />
+          <span>{errors.lastname && "*required lastname."}</span>
 
-        <Input placeholder="Phone" 
-        {...register('phone',{ required: true })} />
-        <span>{errors.phone && "*required phone no. "}</span>
+          <Input placeholder="Email"
+            {...register('email', { required: true })} />
+          <span>{errors.email && "*required email"}</span>
 
-        <InputLabel htmlFor="my-input">Gender</InputLabel>
-        <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label"  >
 
-          <FormControlLabel required="true" value="Female" control={<Radio />} label="Female"
-            gender="Male"
-            {...register('gender', { required: true })}
-          />
+          <Input placeholder="Phone"
+            {...register('phone', { required: true })} />
+          <span>{errors.phone && "*required phone no. "}</span>
 
-          <FormControlLabel required="true" value="Male" control={<Radio />} label="Male"
-            gender="Female"
-          {...register('gender', { required: true })}
-          />
+          <InputLabel htmlFor="my-input">Gender</InputLabel>
+          <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label"  >
 
-          <FormControlLabel required="true" value="Other" control={<Radio />} label="Other"
-          gender="Other"
-            {...register('gender', { required: true })}
-          />
+            <FormControlLabel required="true" value="Female" control={<Radio />} label="Female"
+              gender="Male"
+              {...register('gender', { required: true })}
+            />
 
-        </RadioGroup>
+            <FormControlLabel required="true" value="Male" control={<Radio />} label="Male"
+              gender="Female"
+              {...register('gender', { required: true })}
+            />
 
-        <span>{errors.gender && "*Required gender "}</span>
-        <br />
-        <FormControl>
+            <FormControlLabel required="true" value="Other" control={<Radio />} label="Other"
+              gender="Other"
+              {...register('gender', { required: true })}
+            />
+
+          </RadioGroup>
+
+          <span>{errors.gender && "*Required gender "}</span>
+          <br />
+
           <Button
-            type="submit"
             variant="contained"
+            component="label" 
           >
-            Add User
+            Upload Profile 
+            <input
+              type="file"
+              accept="image/png, image/gif, image/jpeg"
+            onChange={ImageUpload}
+               
+            />
           </Button>
-        </FormControl>
+          <FormControl>
+            <Button
+              type="submit"
+              variant="contained"
+            >
+              Add User
+            </Button>
+          </FormControl>
 
-      </Container>
-    </form>
-      </div>
+        </Container>
+      </form>
+    </div>
   );
 };
 

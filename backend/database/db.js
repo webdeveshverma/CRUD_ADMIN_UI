@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
 const Connection = async (username, password) => {
-    const URL = `mongodb+srv://${username}:${password}@cluster0.bhdqtly.mongodb.net/?retryWrites=true&w=majority`
-    // const URL = `mongodb://localhost:27017`
+    // const URL = `mongodb+srv://${username}:${password}@cluster0.bhdqtly.mongodb.net/?retryWrites=true&w=majority`
+    const URL = `mongodb://localhost:27017`
 
  
 

@@ -14,11 +14,9 @@ const TheWebpatriot = () => {
         <>
        <NavBar/>
         <Header>
-            <Typography variant="h4">The WebPatriot</Typography>
-            <Box style={{ display: 'flex', border: ' 2px solid red' }}>
-
-            </Box>
-            <Box style={{ display: 'flex', border: ' 2px solid red' }}>
+           
+          
+            <Box style={{ display: 'flex',  width:"100%" }}>
                 <img src="https://thewebpatriot.com/wp-content/uploads/2019/12/logo.png" alt='image' />
             </Box>
 
